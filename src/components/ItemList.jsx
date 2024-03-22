@@ -5,9 +5,11 @@ import { useState } from "react";
 import { useMemo } from "react";
 import { sortingOptions } from "../lib/constants";
 import { useItemsContext } from "../hooks";
+import { useItemsStore } from "../stores/itemsStore";
 
 const ItemList = () => {
-  const { items, handleToggleItem, handleDeleteItem } = useItemsContext();
+  const items = useItemsStore((state) => state.items);
+
   const [sortBy, setSortBy] = useState("DEFAULT");
 
   const sortedItems = useMemo(() => {
@@ -44,18 +46,20 @@ const ItemList = () => {
 export default ItemList;
 
 const Item = ({ item }) => {
-  const { handleToggleItem, handleDeleteItem } = useItemsContext();
+  const toggleItem = useItemsStore((state) => state.toggleItem);
+  const deleteItem = useItemsStore((state) => state.deleteItem);
+
   return (
     <li className="item">
       <label>
         <input
-          onChange={() => handleToggleItem(item.id)}
+          onChange={() => toggleItem(item.id)}
           type="checkbox"
           checked={item.packed}
         />{" "}
         {item.name}
       </label>
-      <button onClick={() => handleDeleteItem(item.id)}>❌</button>
+      <button onClick={() => deleteItem(item.id)}>❌</button>
     </li>
   );
 };

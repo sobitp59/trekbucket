@@ -2,9 +2,10 @@ import React from "react";
 import Logo from "./Logo";
 import ItemCounter from "./ItemCounter";
 import { useItemsContext } from "../hooks";
+import { useItemsStore } from "../stores/itemsStore";
 
 const Header = () => {
-  const { items } = useItemsContext();
+  const items = useItemsStore((state) => state.items);
   return (
     <header>
       <Logo />

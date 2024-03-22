@@ -2,11 +2,11 @@ import React from "react";
 import Button from "./Button";
 import { useState } from "react";
 import { useRef } from "react";
-import { useItemsContext } from "../hooks";
+import { useItemsStore } from "../stores/itemsStore";
 
 const AddItemForm = () => {
   const [itemText, setItemText] = useState("");
-  const { handleAddItem } = useItemsContext();
+  const addItem = useItemsStore((state) => state.addItem);
   const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
@@ -18,7 +18,7 @@ const AddItemForm = () => {
       return;
     }
 
-    handleAddItem(itemText);
+    addItem(itemText);
     setItemText("");
     inputRef.current.focus();
   };

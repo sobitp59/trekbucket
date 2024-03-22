@@ -1,20 +1,21 @@
 import React from "react";
 import Button from "./Button";
 import { useItemsContext } from "../hooks";
+import { useItemsStore } from "../stores/itemsStore";
 
 const ButtonGroups = () => {
-  const {
-    handleMarkAllAsComplete,
-    handleMarkAllAsInComplete,
-    handleResetToInitial,
-    handleRemoveAllItems,
-  } = useItemsContext();
+  const markAllAsComplete = useItemsStore((state) => state.markAllAsComplete);
+  const markAllAsInComplete = useItemsStore(
+    (state) => state.markAllAsInComplete
+  );
+  const resetToInitial = useItemsStore((state) => state.resetToInitial);
+  const removeAllItem = useItemsStore((state) => state.removeAllItem);
 
   const secondaryButtons = [
-    { text: "Mark All As Complete", handler: handleMarkAllAsComplete },
-    { text: "Mark All As Incomplete", handler: handleMarkAllAsInComplete },
-    { text: "Reset To Initials", handler: handleResetToInitial },
-    { text: "Remove All Items", handler: handleRemoveAllItems },
+    { text: "Mark All As Complete", handler: markAllAsComplete },
+    { text: "Mark All As Incomplete", handler: markAllAsInComplete },
+    { text: "Reset To Initials", handler: resetToInitial },
+    { text: "Remove All Items", handler: removeAllItem },
   ];
 
   return (
