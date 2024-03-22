@@ -1,14 +1,16 @@
 import React from "react";
 import Logo from "./Logo";
 import ItemCounter from "./ItemCounter";
+import { useItemsContext } from "../hooks";
 
-const Header = ({ totalItemCount, totalItemPacked }) => {
+const Header = () => {
+  const { items } = useItemsContext();
   return (
     <header>
       <Logo />
       <ItemCounter
-        totalItemCount={totalItemCount}
-        totalItemPacked={totalItemPacked}
+        totalItemPacked={items.filter((item) => item.packed).length}
+        totalItemCount={items.length}
       />
     </header>
   );

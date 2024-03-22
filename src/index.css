@@ -276,6 +276,12 @@ form > input::placeholder {
   text-align: center;
 }
 
+.sorting {
+  padding: 15px 28px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 13px;
+}
+
 @media (max-height: 950px) {
   h1 {
     top: 5%;
