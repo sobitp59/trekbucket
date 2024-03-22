@@ -60,6 +60,9 @@ h2 {
   font-size: 16px;
   font-weight: 500;
 }
+h3 {
+  margin-bottom: 5px;
+}
 
 small,
 input,
@@ -263,6 +266,14 @@ form > input::placeholder {
 
 .btn:hover {
   background-color: #123828;
+}
+
+.empty-state {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 }
 
 @media (max-height: 950px) {
