@@ -1,9 +1,9 @@
 import React from "react";
 
-const ItemCounter = () => {
+const ItemCounter = ({ totalItemCount, totalItemPacked }) => {
   return (
     <p className="counter">
-      <b>1</b> / 4 items packed
+      <b>{totalItemPacked}</b> / {totalItemCount} items packed
     </p>
   );
 };
